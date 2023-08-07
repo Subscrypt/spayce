@@ -57,6 +57,12 @@ export const Header = () => {
           Block Explorer
         </NavLink>
       </li>
+      <li>
+        <NavLink href="/crudUI">Crud UI</NavLink>
+      </li>
+      <li>
+        <NavLink href="/docs">docs</NavLink>
+      </li>
     </>
   );
 

@@ -11,13 +11,7 @@ const OptionsButton = ({ onClick }: Props) => {
       onClick={onClick}
       className="w-11 h-11 flex justify-center items-center rounded-xl hover:bg-gray-100 active:bg-gray-300 focus:bg-gray-200"
     >
-      <Image
-        priority
-        src="/img/options.svg"
-        height={4}
-        width={16}
-        alt="Options"
-      />
+      <Image priority src="/img/options.svg" height={4} width={16} alt="Options" />
     </button>
   );
 };

@@ -4,6 +4,7 @@ import fs from "fs";
 import { GetServerSideProps } from "next";
 import path from "path";
 import { createPublicClient, http } from "viem";
+import { Address as AddressType } from "viem";
 import { hardhat } from "wagmi/chains";
 import {
   AddressCodeTab,
@@ -24,7 +25,7 @@ type AddressCodeTabProps = {
 };
 
 type PageProps = {
-  address: string;
+  address: AddressType;
   contractData: AddressCodeTabProps | null;
 };
 

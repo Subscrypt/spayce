@@ -26,6 +26,7 @@
     "start": "yarn workspace @se-2/nextjs dev",
     "test": "yarn foundry:test",
     "vercel": "yarn workspace @se-2/nextjs vercel",
+    "vercel-build": "yarn workspace @se-2/nextjs build",
     "vercel:yolo": "yarn workspace @se-2/nextjs vercel:yolo"
   },
   "resolutions": {

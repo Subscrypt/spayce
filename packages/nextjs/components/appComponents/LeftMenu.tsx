@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "./MenuButton";

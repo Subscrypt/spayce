@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
-import { Box, Flex, HStack, Text } from "@chakra-ui/react";
+import { Box, HStack, Text } from "@chakra-ui/react";
 
 interface IProps {
   backRoute?: string;

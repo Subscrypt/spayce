@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, Button, FormControl, FormErrorMessage, FormLabel, Input, VStack } from "@chakra-ui/react";
+import { Button, FormControl, FormErrorMessage, FormLabel, Input, VStack } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { User } from "@prisma/client";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-export interface IFormValues extends Pick<User, "username"> {}
+export interface IFormValues extends Pick<User, "username"> {} // eslint-disable-line
 
 interface IProps {
   initialValues?: IFormValues;

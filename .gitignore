@@ -1,7 +1,5 @@
 node_modules
-.github
-.husky
-.yarn
+
 # dependencies, yarn, etc
 # yarn / eslint
 .yarn/*
@@ -13,4 +11,3 @@ node_modules
 .eslintcache
 .vscode/**
 .DS_Store
-yarn.lock

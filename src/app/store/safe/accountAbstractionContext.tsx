@@ -98,7 +98,7 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
   const loginWeb3Auth = useCallback(async () => {
     try {
       const options: Web3AuthOptions = {
-        clientId: 'BH_NXbL09urfyHo5qNl10pSE4RnUbQE3eL6HD_Fp0ZfY6NCZ8b2b-wSPK-juDUg8n-iA5IjoOdrsqCz8XdYukGA',
+        clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID as string,
         web3AuthNetwork: 'testnet',
         chainConfig: {
           chainNamespace: CHAIN_NAMESPACES.EIP155,

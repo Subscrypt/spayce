@@ -1,6 +1,8 @@
 "use client"
+import React from 'react'
 import AccountAbstraction from '@safe-global/account-abstraction-kit-poc'
-import { Web3AuthModalPack } from '@safe-global/auth-kit'
+// import { Web3AuthModalPack } from '@safe-global/auth-kit'
+import Web3AuthModalPackFixed from '../../utils/gay'
 import { StripePack } from '@safe-global/onramp-kit'
 import { GelatoRelayPack } from '@safe-global/relay-kit'
 import { MetaTransactionData, MetaTransactionOptions } from '@safe-global/safe-core-sdk-types'
@@ -10,10 +12,10 @@ import { createContext, useCallback, useContext, useEffect, useState } from 'rea
 import { CHAIN_NAMESPACES, WALLET_ADAPTERS } from '@web3auth/base'
 import { Web3AuthOptions } from '@web3auth/modal'
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
-import { initialChain } from '@/app/chains/chains'
-import usePolling from '@/app/components/hooks/safe/usePolling'
-import Chain from '@/app/models/chain'
-import getChain from '@/app/utils/getChain'
+import { initialChain } from '../../chains/chains'
+import usePolling from '../../components/hooks/safe/usePolling'
+import Chain from '../../models/chain'
+import getChain from '../../utils/getChain'
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 
 type accountAbstractionContextValue = {
@@ -89,7 +91,8 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
   }, [chain])
 
   // authClient
-  const [web3AuthModalPack, setWeb3AuthModalPack] = useState<Web3AuthModalPack>()
+  // const [web3AuthModalPack, setWeb3AuthModalPack] = useState<Web3AuthModalPack>()
+  const [web3AuthModalPack, setWeb3AuthModalPack] = useState<Web3AuthModalPackFixed>()
 
   // onRampClient
   const [stripePack, setStripePack] = useState<StripePack>()
@@ -150,7 +153,7 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
         privateKeyProvider
       })
 
-      const web3AuthModalPack = new Web3AuthModalPack({
+      const web3AuthModalPack = new Web3AuthModalPackFixed({
         txServiceUrl: chain.transactionServiceUrl
       })
 

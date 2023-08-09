@@ -14,7 +14,7 @@ declare interface IAdapterFixed<T> extends IAdapter<T> {
     adapterNamespace: AdapterNamespaceTypeFixed;
 }
 
-export class Web3AuthModalPackFixed extends Web3AuthModalPack {
+export default class Web3AuthModalPackFixed extends Web3AuthModalPack {
     /**
      * Initialize the Web3Auth service provider
      * @param options Web3Auth options {@link https://web3auth.io/docs/sdk/web/modal/initialize#arguments}

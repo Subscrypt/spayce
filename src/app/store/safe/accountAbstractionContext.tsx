@@ -2,7 +2,7 @@
 import React from 'react'
 import AccountAbstraction from '@safe-global/account-abstraction-kit-poc'
 // import { Web3AuthModalPack } from '@safe-global/auth-kit'
-import Web3AuthModalPackFixed from '../../utils/web3AuthModalPackFixed'
+import Web3AuthModalPackFixed from '../../utils/gay'
 import { StripePack } from '@safe-global/onramp-kit'
 import { GelatoRelayPack } from '@safe-global/relay-kit'
 import { MetaTransactionData, MetaTransactionOptions } from '@safe-global/safe-core-sdk-types'

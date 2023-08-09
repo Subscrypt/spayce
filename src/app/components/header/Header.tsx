@@ -67,7 +67,7 @@ const Header = () => {
       </div>
       <div className="flex gap-2 items-center tracking-tight font-semibold text-2xl tracking-wide">
         <LogoAnimation />
-        Subscrypto
+        <span className="sm:block hidden">Subscrypto</span>
       </div>
       <div className="flex gap-1">
         {isAuthenticated ?

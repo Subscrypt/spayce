@@ -21,6 +21,7 @@ import { useGlobalState } from "~~/services/store/store";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 import { appChains } from "~~/services/web3/wagmiConnectors";
 import "~~/styles/globals.css";
+import Providers from "~~/components/providers/Providers";
 
 const queryClient = new QueryClient();
 
@@ -72,39 +73,40 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
       >
         <QueryClientProvider client={queryClient}>
           <ChakraProvider resetCSS>
-            <div className="">
-              {debug ? <Header /> : ""}
-              <button
-                className={`fixed z-20 left-4 top-20 px-4 h-8 rounded-full ${
-                  debug ? debugModeStyling.app : debugModeStyling.debug
-                }`}
-                onClick={handleDebugSwitch}
-              >
-                {debug ? "Go App" : "Go Debug"}
-              </button>
-              {debug ? (
-                <main className="">
-                  <Component {...pageProps} />
-                </main>
-              ) : (
-                ""
-              )}
-              {!debug ? (
-                <div className={` text-gray-900 bg-gray-50 px-40 py-2 flex flex-col gap-1 h-screen`}>
-                  <AppHeader />
-                  <div className="w-full flex flex-row gap-1 h-full">
-                    <LeftMenu />
-                    <div className="bg-white rounded-2xl w-full overflow-hidden p-5">
-                      <Component {...pageProps} />
+            <Providers>
+              <div className="">
+                {debug ? <Header /> : ""}
+                <button
+                  className={`fixed z-20 left-4 top-20 px-4 h-8 rounded-full ${debug ? debugModeStyling.app : debugModeStyling.debug
+                    }`}
+                  onClick={handleDebugSwitch}
+                >
+                  {debug ? "Go App" : "Go Debug"}
+                </button>
+                {debug ? (
+                  <main className="">
+                    <Component {...pageProps} />
+                  </main>
+                ) : (
+                  ""
+                )}
+                {!debug ? (
+                  <div className={` text-gray-900 bg-gray-50 px-40 py-2 flex flex-col gap-1 h-screen`}>
+                    <AppHeader />
+                    <div className="w-full flex flex-row gap-1 h-full">
+                      <LeftMenu />
+                      <div className="bg-white rounded-2xl w-full overflow-hidden p-5">
+                        <Component {...pageProps} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                ""
-              )}
+                ) : (
+                  ""
+                )}
 
-              {debug ? <Footer /> : ""}
-            </div>
+                {debug ? <Footer /> : ""}
+              </div>
+            </Providers>
             <Toaster />
           </ChakraProvider>
         </QueryClientProvider>

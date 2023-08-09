@@ -36,7 +36,7 @@ const LogoAnimation = () => {
   };
   return (
     <>
-      <Lottie options={defaultOptions} height={48} width={34} />
+      <Lottie animationData={logo} loop={false} height={38} width={34} />
     </>);
 }
 
@@ -59,7 +59,7 @@ const Header = () => {
 
   return (
 
-    <div className="w-full rounded-2xl h-16 bg-white flex justify-between items-center text-gray-950 pr-2 pl-3 pl-5">
+    <div className="w-full rounded-2xl h-16 bg-white flex justify-between items-center text-gray-950 pr-2 pl-3">
       <div
         style={visible ? showStyle : hideStyle}
         className={`pointer-events-none fixed left-1/2 transition-all py-3 px-8 rounded-full drop-shadow-2xl bg-gray-100 border-2 border-gray-200`}>

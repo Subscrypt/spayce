@@ -20,8 +20,8 @@ const localWalletClient = createWalletClient({
  */
 export const Faucet = () => {
   const [loading, setLoading] = useState(false);
-  const [inputAddress, setInputAddress] = useState<AddressType>();
-  const [faucetAddress, setFaucetAddress] = useState<AddressType>();
+  const [inputAddress, setInputAddress] = useState<AddressType | string>();
+  const [faucetAddress, setFaucetAddress] = useState<AddressType | string>();
   const [sendValue, setSendValue] = useState("");
 
   const { chain: ConnectedChain } = useNetwork();

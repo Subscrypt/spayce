@@ -13,7 +13,7 @@ const LeftMenu = () => {
   const pathName = usePathname;
 
   return (
-    <div className="rounded-2xl w-64 bg-white p-2 flex flex-col gap-1">
+    <div className="rounded-2xl md:w-64 w-fit bg-white p-2 flex flex-col gap-1">
       <Button
         icon="🖊️"
         text="Subscriptions"

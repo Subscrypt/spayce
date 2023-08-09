@@ -1,6 +1,7 @@
 "use client"
 import AccountAbstraction from '@safe-global/account-abstraction-kit-poc'
-import { Web3AuthModalPack } from '@safe-global/auth-kit'
+// import { Web3AuthModalPack } from '@safe-global/auth-kit'
+import { Web3AuthModalPackFixed } from '@/app/utils/Web3AuthModalPackFixed'
 import { StripePack } from '@safe-global/onramp-kit'
 import { GelatoRelayPack } from '@safe-global/relay-kit'
 import { MetaTransactionData, MetaTransactionOptions } from '@safe-global/safe-core-sdk-types'
@@ -89,7 +90,8 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
   }, [chain])
 
   // authClient
-  const [web3AuthModalPack, setWeb3AuthModalPack] = useState<Web3AuthModalPack>()
+  // const [web3AuthModalPack, setWeb3AuthModalPack] = useState<Web3AuthModalPack>()
+  const [web3AuthModalPack, setWeb3AuthModalPack] = useState<Web3AuthModalPackFixed>()
 
   // onRampClient
   const [stripePack, setStripePack] = useState<StripePack>()
@@ -150,7 +152,7 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
         privateKeyProvider
       })
 
-      const web3AuthModalPack = new Web3AuthModalPack({
+      const web3AuthModalPack = new Web3AuthModalPackFixed({
         txServiceUrl: chain.transactionServiceUrl
       })
 

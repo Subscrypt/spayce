@@ -57,7 +57,7 @@ const Subscription = ({
   };
 
   return (
-    <div className="p-2 flex flex-row gap-4 justify-between items-center rounded-2xl bg-gray-50 text-sm">
+    <div className="p-2 flex sm:flex-row flex-col gap-4 justify-between sm:items-center rounded-2xl bg-gray-50 text-sm">
       <div className="flex flex-row gap-3 items-center">
         <img className="h-11 w-11 bg-slate-600 rounded-xl" src={icon} />
         <div className="">
@@ -65,21 +65,23 @@ const Subscription = ({
           <span className="opacity-50">{description}</span>
         </div>
       </div>
-      <div className="relative flex flex-row gap-3">
-        <div className="w-20 pr-3">
-          <span className="opacity-50">{renderSwitch(status)}</span>
-          <br />
-          <span>{renewalDate}</span>
-        </div>
-        <div className="w-16 flex flex-col">
-          <div className={`font-semibold`}>
-            <span className={`opacity-50`}>
+      <div className="relative flex flex-row sm:w-fit justify-between w-full gap-3">
+        <div className="relative flex flex-row gap-3">
+          <div className="w-20 pr-3">
+            <span className="opacity-50">{renderSwitch(status)}</span>
+            <br />
+            <span>{renewalDate}</span>
+          </div>
+          <div className="w-16 flex flex-col">
+            <div className={`font-semibold`}>
+              <span className={`opacity-50`}>
+                <span className="pr-1">{price}</span>
+                <span className="uppercase text-[10px]">{coin}</span>
+              </span>
+              <br />
               <span className="pr-1">{price}</span>
               <span className="uppercase text-[10px]">{coin}</span>
-            </span>
-            <br />
-            <span className="pr-1">{price}</span>
-            <span className="uppercase text-[10px]">{coin}</span>
+            </div>
           </div>
         </div>
         <div className="relative">

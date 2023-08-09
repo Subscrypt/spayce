@@ -4,6 +4,8 @@ import { Figtree } from "next/font/google";
 import Header from "./components/header/Header";
 import LeftMenu from "./components/LeftMenu";
 import Providers from "./components/safe/providers/Providers";
+import { Suspense } from "react";
+import { createContext } from "vm";
 
 const figtree = Figtree({ subsets: ["latin"] });
 
@@ -17,17 +19,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+
   return (
     <Providers>
       <html lang="en">
         <body
-          className={`${figtree.className} text-gray-900 bg-gray-50 px-40 py-2 flex flex-col gap-1 h-screen`}
+          className={`${figtree.className} text-gray-900 bg-gray-50 2xl:px-40 md:px-4 px-1 py-2 flex flex-col gap-1 h-screen`}
         >
           <Header />
           <div className="w-full flex flex-row gap-1 h-full">
             <LeftMenu />
             <div className="bg-white rounded-2xl w-full overflow-hidden p-5">
-              {" "}
               {children}
             </div>
           </div>

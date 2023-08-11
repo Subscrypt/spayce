@@ -8,7 +8,7 @@ const Home = () => {
   const { push } = useRouter()
 
   const onCustomUserHandler = async () => {
-    const txt = await fetch('/newApi/users/custom').then((res) => res.text())
+    const txt = await fetch('/api/users/custom').then((res) => res.text())
     alert(txt)
   }
 

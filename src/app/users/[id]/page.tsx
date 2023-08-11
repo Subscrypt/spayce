@@ -2,7 +2,6 @@
 import { Heading, useToast, VStack } from '@chakra-ui/react'
 import { TPaginationResult } from '@premieroctet/next-crud'
 import { User } from '@prisma/client'
-import { GetServerSideProps, NextPage } from 'next'
 import { useRouter, usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { InfiniteData, useQueryClient } from 'react-query'

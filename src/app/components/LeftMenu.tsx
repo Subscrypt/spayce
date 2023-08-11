@@ -13,7 +13,7 @@ const LeftMenu = () => {
   const pathName = usePathname;
 
   return (
-    <div className="rounded-2xl justify-between md:w-64 sm:static absolute sm:w-fit bottom-2 border-gray-50 border-2 w-[98%] left-[1%] z-10 bg-white flex sm:flex-col flex-row gap-1">
+    <div className="rounded-2xl justify-between md:w-64 sm:static absolute sm:w-fit bottom-2 border-gray-50 sm:border-0 border-2 w-[98%] sm:left-0 left-[1%] z-10 bg-white flex sm:flex-col flex-row gap-1">
       <div className="flex flex-row sm:flex-col gap-1 p-2">
         <Button
           icon="🖊️"

@@ -9,6 +9,7 @@ const handler: NextApiHandler = async (req, res) => {
             prismaClient: prisma,
         }),
         swagger: {
+            enabled: true,
             title: 'My API CRUD',
             apiUrl: process.env.API_URL as string,
             config: {

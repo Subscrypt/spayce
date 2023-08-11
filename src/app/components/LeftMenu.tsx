@@ -3,7 +3,6 @@ import React from "react";
 import Button from "./MenuButton";
 import { usePathname, useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
-import { deploySafe } from "../utils/safe/protocol-kit/deploy-safe";
  
 
 
@@ -14,10 +13,6 @@ const LeftMenu = () => {
 
   const router = useRouter();
   const pathName = usePathname;
-
-  const safeConfig = {
-    
-  }
 
   return (
     <div className="rounded-2xl justify-between md:w-64 sm:static absolute sm:w-fit bottom-2 border-gray-50 sm:border-0 border-2 w-[98%] sm:left-0 left-[1%] z-10 bg-white flex sm:flex-col flex-row gap-1">

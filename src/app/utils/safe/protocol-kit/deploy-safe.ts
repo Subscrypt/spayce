@@ -26,6 +26,7 @@ export async function deploySafe(
   config: Config,
   callback?: (txHash: string) => void
 ): Promise<string> {
+  console.log('Deploying Safe...')
   const provider = new ethers.providers.JsonRpcProvider(config.RPC_URL)
   const deployerSigner = new ethers.Wallet(config.DEPLOYER_ADDRESS_PRIVATE_KEY, provider)
 

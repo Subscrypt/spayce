@@ -10,7 +10,7 @@ const handler: NextApiHandler = async (req, res) => {
         }),
         swagger: {
             title: 'My API CRUD',
-            apiUrl: process.env.API_URL as string,
+            apiUrl: process.env.NEXT_PUBLIC_API_URL as string,
             config: {
                 User: {
                     tag: {

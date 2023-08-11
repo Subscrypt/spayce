@@ -23,7 +23,7 @@ const SwaggerUI = dynamic(() => import('swagger-ui-react'), { ssr: false });
 //   return spec
 // }
 
-export default async function ApiDoc() {
+export default function ApiDoc() {
   // const spec = await getSpecs();
   return <SwaggerUI url='/api/docs' />;
 }

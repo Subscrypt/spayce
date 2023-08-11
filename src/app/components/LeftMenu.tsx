@@ -13,25 +13,42 @@ const LeftMenu = () => {
   const pathName = usePathname;
 
   return (
-    <div className="rounded-2xl md:w-64 w-fit bg-white p-2 flex flex-col gap-1">
-      <Button
-        icon="🖊️"
-        text="Subscriptions"
-        onClick={() => handleNavigation("/", router)}
-        isFocused={pathName() === "/" ? true : false}
-      />
-      <Button
-        icon="📃"
-        text="Billings"
-        onClick={() => handleNavigation("/billings", router)}
-        isFocused={pathName() === "/billings" ? true : false}
-      />
-      <Button
-        icon="👔"
-        text="Services"
-        onClick={() => handleNavigation("/services", router)}
-        isFocused={pathName() === "/services" ? true : false}
-      />
+    <div className="rounded-2xl justify-between md:w-64 w-fit bg-white flex flex-col gap-1">
+      <div className="flex flex-col gap-1 p-2">
+        <Button
+          icon="🖊️"
+          text="Subscriptions"
+          onClick={() => handleNavigation("/", router)}
+          isFocused={pathName() === "/" ? true : false}
+        />
+
+        <Button
+          icon="👔"
+          text="Marketplace"
+          onClick={() => handleNavigation("/marketplace", router)}
+          isFocused={pathName() === "/marketplace" ? true : false}
+        />
+        <Button
+          icon="📃"
+          text="Billings"
+          onClick={() => handleNavigation("/billings", router)}
+          isFocused={pathName() === "/billings" ? true : false}
+        />
+      </div>
+      <div className="flex flex-col gap-1 p-2">
+        <Button
+          icon="⚙️"
+          text="Dev"
+          onClick={() => handleNavigation("/docs/nav", router)}
+          isFocused={pathName() === "/docs/nav" ? true : false}
+        />
+        <Button
+          icon="📃"
+          text="Swagger"
+          onClick={() => handleNavigation("/docs", router)}
+          isFocused={pathName() === "/docs" ? true : false}
+        />
+      </div>
     </div>
   );
 };

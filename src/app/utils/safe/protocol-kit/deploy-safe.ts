@@ -2,8 +2,16 @@ import { SafeAccountConfig, SafeFactory } from '@safe-global/protocol-kit'
 import { EthersAdapter } from '@safe-global/protocol-kit'
 import { ethers } from 'ethers'
 
-// This file can be used to play around with the Safe Core SDK
 
+// {
+//   RPC_URL: 'https://goerli.infura.io/v3/<INFURA_KEY>',
+//   DEPLOYER_ADDRESS_PRIVATE_KEY: '<DEPLOYER_PRIVATE_KEY>',
+//   DEPLOY_SAFE: {
+//     OWNERS: ['<OWNER_ADDRESS_1>', '<OWNER_ADDRESS_2>'],
+//     THRESHOLD: 1, // <SAFE_THRESHOLD>
+//     SALT_NONCE: '<SALT_NONCE_NUMBER>'
+//   }
+// }
 interface Config {
   RPC_URL: string
   DEPLOYER_ADDRESS_PRIVATE_KEY: string
@@ -14,17 +22,10 @@ interface Config {
   }
 }
 
-const config: Config = {
-  RPC_URL: 'https://goerli.infura.io/v3/<INFURA_KEY>',
-  DEPLOYER_ADDRESS_PRIVATE_KEY: '<DEPLOYER_PRIVATE_KEY>',
-  DEPLOY_SAFE: {
-    OWNERS: ['<OWNER_ADDRESS_1>', '<OWNER_ADDRESS_2>'],
-    THRESHOLD: 1, // <SAFE_THRESHOLD>
-    SALT_NONCE: '<SALT_NONCE_NUMBER>'
-  }
-}
-
-async function main() {
+export async function deploySafe(
+  config: Config,
+  callback?: (txHash: string) => void
+): Promise<string> {
   const provider = new ethers.providers.JsonRpcProvider(config.RPC_URL)
   const deployerSigner = new ethers.Wallet(config.DEPLOYER_ADDRESS_PRIVATE_KEY, provider)
 
@@ -52,8 +53,10 @@ async function main() {
 
   console.log('Predicted deployed Safe address:', predictedDeploySafeAddress)
 
-  function callback(txHash: string) {
-    console.log('Transaction hash:', txHash)
+  if (!callback) {
+    callback = (txHash: string) => {
+      console.log('Transaction hash:', txHash)
+    }
   }
 
   // Deploy Safe
@@ -64,6 +67,6 @@ async function main() {
   })
 
   console.log('Deployed Safe:', safe.getAddress())
-}
 
-main()
+  return safe.getAddress()
+}

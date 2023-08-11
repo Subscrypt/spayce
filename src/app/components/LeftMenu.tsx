@@ -3,6 +3,9 @@ import React from "react";
 import Button from "./MenuButton";
 import { usePathname, useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { deploySafe } from "../utils/safe/protocol-kit/deploy-safe";
+ 
+
 
 const LeftMenu = () => {
   const handleNavigation = (path: string, router: AppRouterInstance) => {
@@ -11,6 +14,10 @@ const LeftMenu = () => {
 
   const router = useRouter();
   const pathName = usePathname;
+
+  const safeConfig = {
+    
+  }
 
   return (
     <div className="rounded-2xl md:w-64 w-fit bg-white p-2 flex flex-col gap-1">
@@ -31,6 +38,11 @@ const LeftMenu = () => {
         text="Services"
         onClick={() => handleNavigation("/services", router)}
         isFocused={pathName() === "/services" ? true : false}
+      />
+      <Button
+        icon="👔"
+        text="Services"
+        onClick={async () => deploySafe(safeConfig)}
       />
     </div>
   );

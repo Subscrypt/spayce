@@ -33,6 +33,7 @@ const fetchProviders = async () => {
 
 export default function Page() {
     const [chosen, setChosen] = useState(0);
+    const [subChosen, setSubChosen] = useState(1);
     const [providers, setProviders] = useState<ProviderElement[] | null>(null);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -68,14 +69,14 @@ export default function Page() {
                         </div>
                         <div className="flex flex-row gap-2 items-center justify-center flex-wrap">
                             {providers ? providers.map((elem, key) => (
-                                <SubscriptionItem id={elem.id} key={key} name={elem.provider.name} description={elem.name} logo={elem.provider.icon} onClick={(id: number) => { setChosen(id) }} />
+                                <SubscriptionItem id={elem.id} key={key} name={elem.provider.name} description={elem.name} logo={elem.provider.icon} onClick={(id: number) => { setChosen(id); setSubChosen(id) }} />
                             )) : null}
 
                         </div>
                     </div>
                 }
                 <div className="flex flex-col gap-2">
-                    <div className={`${chosen === 0 ? 'opacity-0' : 'opacity-60'} w-full text-center uppercase text-sm font-semibold`}>{providers ? providers[chosen - 1].provider.name + ' ' + providers[chosen - 1].name + " is for " + providers[chosen - 1].max_users + " members" : null}</div>
+                    <div className={`${chosen === 0 ? 'opacity-0' : 'opacity-60'} w-full text-center uppercase text-sm font-semibold`}>{providers ? providers[subChosen - 1].provider.name + ' ' + providers[subChosen - 1].name + " is for " + providers[subChosen - 1].max_users + " members" : null}</div>
                     <button className={`${chosen === 0 ? 'opacity-30' : 'opacity-100'} flex flex-row gap-1 items-center justify-center transition-opacity p-4 bg-green-500 hover:bg-green-600 active:bg-green-700 font-bold text-white rounded-xl`}>
                         <div
                             onClick={handleCreateSpayce}

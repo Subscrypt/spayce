@@ -3,10 +3,26 @@ import React, { useState, useRef, useEffect } from "react"
 import PopUpEnvironment from "../../components/utils/PopUpEnvironment"
 import SubscriptionItem from "../../components/createSubscription/subscriptionItem"
 import logoWhite from '../../../../public/img/logo_white.json'
+import logo from '../../../../public/img/logo.json'
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 
 const handleCreateSpayce = () => {
 
+}
+
+interface CompanyProvider {
+    id: number
+    name: string
+    address: string
+    icon: string
+}
+
+interface ProviderElement {
+    id: number
+    name: string
+    providerId: number
+    max_users: number
+    provider: CompanyProvider
 }
 
 const fetchProviders = async () => {
@@ -15,16 +31,21 @@ const fetchProviders = async () => {
     return providers;
 }
 
-export default async function Page() {
+export default function Page() {
     const [chosen, setChosen] = useState(0);
-    const [providers, setProviders] = useState({ a: 'a' });
+    const [providers, setProviders] = useState<ProviderElement[] | null>(null);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
-        const getProviders = async () => {
-            const provs = await fetchProviders();
-            setProviders(provs);
-        }
-        getProviders();
-        console.log('gay')
+        if (providers === null) {
+            const getProviders = async () => {
+                setLoading(true);
+                const provs = await fetchProviders();
+                setProviders(provs);
+            }
+            getProviders()
+        } else {
+            setLoading(false)
+        };
     })
 
     const lottieRef: React.MutableRefObject<LottieRefCurrentProps | null> = useRef(null);
@@ -39,24 +60,23 @@ export default async function Page() {
                 <div className="font-bold text-3xl">
                     New Spayce is Waiting for You
                 </div>
-                <div className="pb-4">
-                    <div className="pb-2 text-center font-semibold">
-                        Choose your plan
-                    </div>
-                    <div className="flex flex-row gap-2 items-center justify-center flex-wrap">
-                        <SubscriptionItem id={1} name="Spotify" description="Family Plan" logo="kek" onClick={(id: number) => { setChosen(id) }} />
-                        <SubscriptionItem id={2} name="Spotify" description="Family Plan" logo="kek" onClick={(id: number) => { setChosen(id) }} />
-                        <SubscriptionItem id={3} name="Spotify" description="Family Plan" logo="kek" onClick={(id: number) => { setChosen(id) }} />
-                        <SubscriptionItem id={4} name="Spotify" description="Family Plan" logo="kek" onClick={(id: number) => { setChosen(id) }} />
-                        <SubscriptionItem id={5} name="Spotify" description="Family Plan" logo="kek" onClick={(id: number) => { setChosen(id) }} />
-                        <SubscriptionItem id={6} name="Spotify" description="Family Plan" logo="kek" onClick={(id: number) => { setChosen(id) }} />
-                    </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                    <div>{JSON.stringify(providers)}</div>
-                    <div className={`${chosen === 0 ? 'opacity-0' : 'opacity-60'} w-full text-center uppercase text-sm font-semibold`}>Spotify Family Plan is for 5 members</div>
-                    <button className={`${chosen === 0 ? 'opacity-30' : 'opacity-100'} flex flex-row gap-1 items-center justify-center transition-opacity p-4 bg-green-500 hover:bg-green-600 active:bg-green-700 font-bold text-white rounded-xl`}>
+                {loading ? <div className="w-20 h-20"><Lottie animationData={logo} autoplay={true} loop={true} /></div>
+                    :
+                    <div className="pb-4">
+                        <div className="pb-2 text-center font-semibold">
+                            Choose your plan
+                        </div>
+                        <div className="flex flex-row gap-2 items-center justify-center flex-wrap">
+                            {providers ? providers.map((elem) => (
+                                <SubscriptionItem id={elem.id} name={elem.provider.name} description={elem.name} logo={elem.provider.icon} onClick={(id: number) => { setChosen(id) }} />
+                            )) : null}
 
+                        </div>
+                    </div>
+                }
+                <div className="flex flex-col gap-2">
+                    <div className={`${chosen === 0 ? 'opacity-0' : 'opacity-60'} w-full text-center uppercase text-sm font-semibold`}>{providers ? providers[chosen - 1].provider.name + ' ' + providers[chosen - 1].name + " is for " + providers[chosen - 1].max_users + " members" : null}</div>
+                    <button className={`${chosen === 0 ? 'opacity-30' : 'opacity-100'} flex flex-row gap-1 items-center justify-center transition-opacity p-4 bg-green-500 hover:bg-green-600 active:bg-green-700 font-bold text-white rounded-xl`}>
                         <div
                             onClick={handleCreateSpayce}
                             style={{ transform: chosen === 0 ? 'translateX(-16px)' : 'translateX(0px)' }}
@@ -69,6 +89,7 @@ export default async function Page() {
                         </div>
                     </button>
                 </div>
+
             </div>
         </PopUpEnvironment>
     )

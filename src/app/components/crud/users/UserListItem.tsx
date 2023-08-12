@@ -9,7 +9,7 @@ interface IProps extends User {
   onDelete: (id: User['id']) => void
 }
 
-const UserListItem = ({ id, username, onEdit, onDelete }: IProps) => {
+const UserListItem = ({ id, name, onEdit, onDelete }: IProps) => {
   return (
     <Flex
       direction="row"
@@ -20,7 +20,7 @@ const UserListItem = ({ id, username, onEdit, onDelete }: IProps) => {
     >
       <HStack spacing={8} align="center">
         <Text>#{id}</Text>
-        <Text>{username}</Text>
+        <Text>{name}</Text>
       </HStack>
       <ButtonGroup spacing={2}>
         <IconButton

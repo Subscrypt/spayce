@@ -1,23 +1,20 @@
 'use client'
-import { Heading, useToast, VStack } from '@chakra-ui/react'
-import { TPaginationResult } from '@premieroctet/next-crud'
-import { User } from '@prisma/client'
-import { useRouter, usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-import { InfiniteData, useQueryClient } from 'react-query'
+import {Heading, useToast, VStack} from '@chakra-ui/react'
+import {TPaginationResult} from '@premieroctet/next-crud'
+import {User} from '@prisma/client'
+import {usePathname, useRouter} from 'next/navigation'
+import React, {useEffect, useState} from 'react'
+import {InfiniteData, useQueryClient} from 'react-query'
 import Layout from '../../components/crud/Layout'
-import UserForm, { IFormValues } from '../../components/crud/users/UserForm'
-
-
+import UserForm, {IFormValues} from '../../components/crud/users/UserForm'
 
 
 async function getUser(userId: string) {
-  const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`).then(
-    (res) => res.json())
-  return user
+  return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`).then(
+      (res) => res.json())
 }
 
-// Promise<NextPage<IProps>> 
+// Promise<NextPage<IProps>>
 export default function UserCreate() {
 
   const path = usePathname();
@@ -25,7 +22,7 @@ export default function UserCreate() {
   const toast = useToast()
   const { replace } = useRouter()
   const queryClient = useQueryClient()
-  const mockUser: User = { id: -1, username: '', isAdmin: false }
+  const mockUser: User = { id: -1, name: '', address: ''}
   const [user, setUser] = useState(mockUser);
   useEffect(() => {
     async function fetchUser() {
@@ -85,11 +82,11 @@ export default function UserCreate() {
   }
 
   return (
-    <Layout title={user.username} backRoute="/users">
+    <Layout title={user.name!} backRoute="/users">
       <VStack spacing={4} width="100%">
         <Heading>User edition</Heading>
         <UserForm
-          initialValues={{ username: user.username }}
+          initialValues={{ name: user.name }}
           onSubmit={onSubmit}
         />
       </VStack>

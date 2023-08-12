@@ -1,6 +1,6 @@
 "use client"
-import React, { useState, useEffect, useContext } from "react";
-import { useAccountAbstraction } from "@/app/store/safe/accountAbstractionContext";
+import React, { useState, useEffect } from "react";
+import { useAccountAbstraction } from "../../store/safe/accountAbstractionContext";
 import Lottie from "lottie-react";
 import logo from "../../../../public/img/logo.json"
 import { usePathname, useSearchParams } from 'next/navigation';

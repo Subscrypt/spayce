@@ -1,5 +1,5 @@
-import { AccountAbstractionProvider } from "@/app/store/safe/accountAbstractionContext"
-
+import React from "react"
+import { AccountAbstractionProvider } from "../../../store/safe/accountAbstractionContext"
 
 
 const Providers = ({ children }: { children: JSX.Element }) => {

@@ -8,7 +8,8 @@ const Landing = () => {
     return (
         <div className='overflow-hidden'>
             <div>
-                <div className='relative overflow-hidden p-12 flex flex-col justify-end items-start w-full h-[900px] bg-gray-50 rounded-2xl'>
+                <div className='border-2 border-gray-100 relative overflow-hidden p-12 flex flex-col justify-end items-start w-full h-[900px] bg-gray-50 rounded-2xl'>
+                    <div>made proudly on <img src='/img/landing/base.png' /> and </div>
                     <div className='absolute right-[-150px] top-[-150px]'>
                         <Image quality={100} width={787} height={1060} alt='imageCollection' src={'/img/landing/collection.png'} />
                     </div>

@@ -4,7 +4,6 @@ import Button from "./MenuButton";
 import { usePathname, useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import CreateSpayceButtom from "./CreateSpayceButton"
-import CreateSpayceButtom from "./CreateSpayceButton"
 
 const LeftMenu = () => {
   const handleNavigation = (path: string, router: AppRouterInstance) => {

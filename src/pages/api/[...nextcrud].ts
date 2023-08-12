@@ -1,11 +1,11 @@
-import {User, Provider, Subscription, SubscriptionMember, Payment, Prisma} from '@prisma/client'
+import {User, Provider, Plan, Subscription, SubscriptionMember, Payment, Prisma} from '@prisma/client'
 import NextCrud, {PrismaAdapter} from '@premieroctet/next-crud'
 import {prisma} from '@/app/db'
 import {NextApiHandler} from 'next'
 
 const handler: NextApiHandler = async (req, res) => {
     const nextCrudHandler = await NextCrud({
-        adapter: new PrismaAdapter<User | Provider | Subscription | SubscriptionMember | Payment , Prisma.ModelName>({
+        adapter: new PrismaAdapter<User | Provider | Plan | Subscription | SubscriptionMember | Payment , Prisma.ModelName>({
             prismaClient: prisma,
         }),
         swagger: {
@@ -21,6 +21,11 @@ const handler: NextApiHandler = async (req, res) => {
                 Provider: {
                     tag: {
                         name: 'Providers',
+                    },
+                },
+                Plan: {
+                    tag: {
+                        name: 'Plans',
                     },
                 },
                 Subscription: {

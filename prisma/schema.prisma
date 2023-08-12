@@ -10,40 +10,42 @@ model User {
   id          Int                  @id @default(autoincrement())
   name        String
   address     String
-
   payments    Payment[]
   memberships SubscriptionMember[]
 }
 
 model Provider {
+  id      Int    @id @default(autoincrement())
+  name    String
+  address String
+  icon    String?
+  plans   Plan[]
+}
+
+model Plan {
   id            Int            @id @default(autoincrement())
   name          String
-  address       String
-
+  provider      Provider       @relation(fields: [providerId], references: [id])
+  providerId    Int
   subscriptions Subscription[]
 }
 
 model Subscription {
-  id         Int                  @id @default(autoincrement())
-  address    String
-
-  provider   Provider             @relation(fields: [providerId], references: [id])
-  providerId Int
-
-  members    SubscriptionMember[]
+  id      Int                  @id @default(autoincrement())
+  address String
+  plan    Plan                 @relation(fields: [planId], references: [id])
+  planId  Int
+  members SubscriptionMember[]
 }
 
 model SubscriptionMember {
   id             Int          @id @default(autoincrement())
   createdAt      DateTime     @default(now())
   accepted       Boolean      @default(false)
-
   user           User         @relation(fields: [userId], references: [id])
   userId         Int
-
   subscription   Subscription @relation(fields: [subscriptionId], references: [id])
   subscriptionId Int
-
   payments       Payment[]
 }
 
@@ -51,10 +53,8 @@ model Payment {
   id                   Int                 @id @default(autoincrement())
   amount               BigInt
   createdAt            DateTime            @default(now())
-
   user                 User?               @relation(fields: [userId], references: [id])
   userId               Int?
-  
   member               SubscriptionMember? @relation(fields: [subscriptionMemberId], references: [id])
   subscriptionMemberId Int?
 }

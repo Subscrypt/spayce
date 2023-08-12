@@ -7,18 +7,33 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  username String
-  isAdmin  Boolean?
-  posts    Post[]
+  id       Int       @id @default(autoincrement())
+  name     String
+  address  String
+  payments Payment[]
 }
 
-model Post {
+model Payment {
+  id     Int    @id @default(autoincrement())
+  amount BigInt
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id])
+  subscriptionId Int
+}
+
+model Subscription {
+  id       Int       @id @default(autoincrement())
+  address  String
+  payments Payment[]
+}
+
+model Provider {
   id      Int    @id @default(autoincrement())
-  title   String
-  content String
-  user    User   @relation(fields: [userId], references: [id])
-  userId  Int
+  name    String
+  address String
 }
 
 generator client {

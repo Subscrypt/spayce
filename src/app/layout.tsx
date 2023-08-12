@@ -1,4 +1,5 @@
 import "./globals.css";
+import React from "react";
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import Header from "./components/header/Header";
@@ -13,10 +14,9 @@ export const metadata: Metadata = {
   description: "Save money on Netflix with Subscrypt",
 };
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout(props: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
 
   return (
@@ -30,7 +30,8 @@ export default function RootLayout({
             <LeftMenu />
             <div className="bg-white rounded-2xl w-full overflow-auto p-5">
               <QueryProvider>
-                {children}
+                {props.children}
+                {props?.modal}
               </QueryProvider>
             </div>
           </div>

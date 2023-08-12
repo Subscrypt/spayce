@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   FormControl,
   FormErrorMessage,
@@ -13,7 +12,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-export interface IFormValues extends Pick<User, 'username'> { }
+export interface IFormValues extends Pick<User, 'name'> { }
 
 interface IProps {
   initialValues?: IFormValues
@@ -21,7 +20,7 @@ interface IProps {
 }
 
 const schema = yup.object<IFormValues>({
-  username: yup.string().required('Username required'),
+  name: yup.string().required('Username required'),
 })
 
 const UserForm = ({ initialValues, onSubmit }: IProps) => {
@@ -39,13 +38,13 @@ const UserForm = ({ initialValues, onSubmit }: IProps) => {
       width="100%"
     >
       <FormControl
-        id="username"
-        isInvalid={!!formState.errors.username?.message}
+        id="name"
+        isInvalid={!!formState.errors.name?.message}
       >
         <FormLabel>Username</FormLabel>
-        <Input {...register('username', { required: true })} />
+        <Input {...register('name', { required: true })} />
         <FormErrorMessage>
-          {formState.errors.username?.message}
+          {formState.errors.name?.message}
         </FormErrorMessage>
       </FormControl>
       <Button

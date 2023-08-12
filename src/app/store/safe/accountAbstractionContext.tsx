@@ -34,8 +34,8 @@ type accountAbstractionContextValue = {
   isRelayerLoading: boolean
   relayTransaction: () => Promise<void>
   gelatoTaskId?: string
-  openStripeWidget: () => Promise<void>
-  closeStripeWidget: () => Promise<void>
+  // openStripeWidget: () => Promise<void>
+  // closeStripeWidget: () => Promise<void>
 }
 
 const initialState = {
@@ -95,7 +95,7 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
   const [web3AuthModalPack, setWeb3AuthModalPack] = useState<Web3AuthModalPackFixed>()
 
   // onRampClient
-  const [stripePack, setStripePack] = useState<StripePack>()
+  // const [stripePack, setStripePack] = useState<StripePack>()
 
   // auth-kit implementation
   const loginWeb3Auth = useCallback(async () => {
@@ -259,38 +259,41 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
   }
 
   // onramp-kit implementation
-  const openStripeWidget = async () => {
-    const stripePack = new StripePack({
-      stripePublicKey: process.env.REACT_APP_STRIPE_PUBLIC_KEY || '',
-      onRampBackendUrl: process.env.REACT_APP_STRIPE_BACKEND_BASE_URL || ''
-    })
+  // const openStripeWidget = async () => {
+  //   const stripePack = new StripePack({
+  //     stripePublicKey: process.env.REACT_APP_STRIPE_PUBLIC_KEY || '',
+  //     onRampBackendUrl: process.env.REACT_APP_STRIPE_BACKEND_BASE_URL || ''
+  //   })
 
-    await stripePack.init()
+  //   await stripePack.init()
 
-    const sessionData = await stripePack.open({
-      // sessionId: sessionId, optional parameter
-      element: '#stripe-root',
-      defaultOptions: {
-        transaction_details: {
-          wallet_address: safeSelected,
-          supported_destination_networks: ['ethereum', 'polygon'],
-          supported_destination_currencies: ['usdc'],
-          lock_wallet_address: true
-        },
-        customer_information: {
-          email: 'john@doe.com'
-        }
-      }
-    })
+  // const sessionData = await stripePack.open({
+  //   // sessionId: sessionId, optional parameter
+  //   element: '#stripe-root',
+  //   defaultOptions: {
+  //     transaction_details: {
+  //       wallet_address: safeSelected,
+  //       supported_destination_networks: ['ethereum', 'polygon'],
+  //       supported_destination_currencies: ['usdc'],
+  //       lock_wallet_address: true
+  //     },
+  //     customer_information: {
+  //       email: 'john@doe.com'
+  //     }
+  //   }
+  // })
 
-    setStripePack(stripePack)
+  //   setStripePack(stripePack)
 
-    console.log('Stripe sessionData: ', sessionData)
-  }
+  //   console.log('Stripe sessionData: ', sessionData)
+  // }
 
-  const closeStripeWidget = async () => {
-    stripePack?.close()
-  }
+  // const closeStripeWidget = async () => {
+  //   stripePack?.close()
+  // }
+
+  const closeStripeWidget = () => { };
+  const openStripeWidget = () => { };
 
   // we can pay Gelato tx relayer fees with native token & USDC
   // TODO: ADD native Safe Balance polling

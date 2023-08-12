@@ -105,8 +105,8 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
         web3AuthNetwork: 'testnet',
         chainConfig: {
           chainNamespace: CHAIN_NAMESPACES.EIP155,
-          chainId: '0x13881',
-          rpcTarget: 'https://rpc-mumbai.maticvigil.com/'
+          chainId: '0x14A33',
+          rpcTarget: 'https://goerli.base.org'
         },
         uiConfig: {
           theme: 'light',
@@ -115,13 +115,13 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
       }
 
       const chainConfig = {
-        rpcTarget: "https://rpc-mumbai.maticvigil.com/",
-        chainId: "0x13881", // hex chain id
-        networkName: "matic",
-        blockExplorer: 'https://mumbai.polygonscan.com/',
+        rpcTarget: "https://goerli.base.org",
+        chainId: "0x14A33", // hex chain id
+        networkName: "ETH",
+        blockExplorer: 'https://goerli.basescan.org/',
         displayName: "Subscrypto Test",
-        ticker: "matic",
-        tickerName: "matic",
+        ticker: "ETH",
+        tickerName: "ETH",
       }
 
       const privateKeyProvider = new EthereumPrivateKeyProvider({

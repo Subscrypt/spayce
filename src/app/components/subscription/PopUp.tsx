@@ -9,6 +9,7 @@ import FullSubscriber from './subscribers/FullSubscriber'
 import { usePathname } from 'next/navigation';
 import Notification from '../notification/Notification';
 import SubsBilling from './subsBilling/SubsBilling'
+import PopUpEnvironment from '../utils/PopUpEnvironment'
 
 
 
@@ -21,8 +22,6 @@ const PopUp = ({
     status,
     renewalDate,
 }: SubscriptionInfo) => {
-    const wrapperRef = useRef(null);
-    useOutsideAlerter(wrapperRef);
     const pathName = usePathname();
     const handleLinkCopy = () => {
         const link = 'https://subscrypt.vercel.com' + pathName;
@@ -36,7 +35,6 @@ const PopUp = ({
     return (
         <PopUpEnvironment>
             <div
-                ref={wrapperRef}
                 className='bg-white flex flex-col rounded-2xl p-3 gap-2'>
                 <div className="flex flex-row items-start justify-between gap-3 mb-2">
                     <div className="flex flex-row items-center justify-between gap-3 mb-2">
@@ -94,18 +92,6 @@ const PopUp = ({
     )
 }
 
-interface PopUpEnvironment {
-    children?: React.ReactElement
-}
 
-const PopUpEnvironment = ({ children }: PopUpEnvironment) => {
-    return (
-        <div
-            style={{ backgroundColor: 'rgba(0,1,0,.3)' }}
-            className='fixed flex justify-center items-center w-full h-full left-0 top-0 z-20'>
-            {children}
-        </div>
-    )
-}
 
 export default PopUp

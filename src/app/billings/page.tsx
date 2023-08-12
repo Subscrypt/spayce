@@ -1,3 +1,4 @@
+import React from 'react';
 import Billing from '../components/billings/Billing'
 
 export default function Home() {

@@ -1,11 +1,10 @@
 "use client"
-import { useState } from "react"
+import React from "react"
+import { useContext, useState } from "react"
 
 export default function Loading() {
-    const [loading, setLoading] = useState(false);
     return (
         <>
-            Loading...
         </>
     )
 }

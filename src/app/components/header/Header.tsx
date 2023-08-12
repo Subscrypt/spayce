@@ -4,6 +4,7 @@ import { useAccountAbstraction } from "@/app/store/safe/accountAbstractionContex
 import Lottie from "lottie-react";
 import logo from "../../../../public/img/logo.json"
 import { usePathname, useSearchParams } from 'next/navigation';
+import Notification from "../notification/Notification"
 
 const NavigationEvents = () => {
   const pathname = usePathname()
@@ -49,8 +50,6 @@ const Header = () => {
     setVisible(true);
     setTimeout(() => setVisible(false), 1500)
   }
-  const hideStyle = { opacity: 0, transform: 'translateY(0px) translateX(-50%)' }
-  const showStyle = { opacity: 1, transform: 'translateY(5px) translateX(-50%)' }
 
   const copyTextNotif = () => renderNotification("Text Copied!")
 
@@ -60,14 +59,10 @@ const Header = () => {
   return (
 
     <div className="w-full rounded-2xl h-16 bg-white flex justify-between items-center text-gray-950 pr-2 pl-3">
-      <div
-        style={visible ? showStyle : hideStyle}
-        className={`pointer-events-none fixed left-1/2 transition-all py-3 px-8 rounded-full drop-shadow-2xl bg-gray-100 border-2 border-gray-200`}>
-        Address Copied!
-      </div>
+      <Notification visible={visible} text='Address Copied!' />
       <div className="flex gap-2 items-center tracking-tight font-semibold text-2xl tracking-wide">
         <LogoAnimation />
-        <span className="sm:block hidden">Subscrypto</span>
+        <span className="sm:block hidden">Spayce</span>
       </div>
       <div className="flex gap-1">
         {isAuthenticated ?

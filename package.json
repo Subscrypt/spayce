@@ -27,6 +27,7 @@
     "@web3auth/modal": "^6.1.7",
     "@web3auth/openlogin-adapter": "^6.1.7",
     "autoprefixer": "10.4.14",
+    "boring-avatars": "^1.10.1",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
     "ethers": "^5.7.2",
@@ -35,6 +36,7 @@
     "next": "13.4.13",
     "next-swagger-doc": "^0.4.0",
     "postcss": "8.4.27",
+    "randomcolor": "^0.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.4",
@@ -45,6 +47,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.4.9",
+    "@types/randomcolor": "^0.5.7",
     "@types/react-lottie": "^1.2.6",
     "@types/swagger-ui-react": "^4.18.0",
     "encoding": "^0.1.13",

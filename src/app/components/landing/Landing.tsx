@@ -25,7 +25,7 @@ const Landing = () => {
                 </div>
                 <div className='flex flex-col gap-6 px-12 py-20 w-2/3 text-5xl font-bold text-gray-900 leading-none'>
                     <span>Everybody loves <span className='text-red-500'>Netflix</span></span>
-                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn't feel like a good value. So you plan to share a Premium Plan for $12.99 for 5 people, but your friend Jake is not a reliable person to pay his share, and you don't have the rest 3 to share your lovely streaming service.<br /> And also, <span className='font-bold'>you don't want to pay with your card all by yourself</span></div>
+                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. So you plan to share a Premium Plan for $12.99 for 5 people, but your friend Jake is not a reliable person to pay his share, and you don&apos;t have the rest 3 to share your lovely streaming service.<br /> And also, <span className='font-bold'>you don&apos;t want to pay with your card all by yourself</span></div>
                 </div>
 
                 <div className='rounded-2xl bg-green-500 text-gray-900 flex flex-col gap-12 p-12 w-full text-5xl font-bold text-gray-900 leading-none'>
@@ -41,7 +41,7 @@ const Landing = () => {
                         </div>
                         <div className='w-1/4 flex flex-col gap-2'>
                             <div className='text-3xl text-white'>We organize the payment</div>
-                            <div className='text-xl font-semibold'>Now you don't have to rely on that one person with a credit card, or worse, be one. </div>
+                            <div className='text-xl font-semibold'>Now you don&apos;t have to rely on that one person with a credit card, or worse, be one. </div>
                         </div>
                         <div className='w-1/4 flex flex-col gap-2'>
                             <div className='text-3xl text-white'>You watch Netlix with 80% discount</div>
@@ -55,15 +55,15 @@ const Landing = () => {
                 </div>
                 <div className='flex flex-col gap-6 px-12 py-20 w-2/3 text-5xl font-bold text-gray-900 leading-none'>
                     <span>Accout Abstractions</span>
-                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn't feel like a good value. </div>
+                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. </div>
                 </div>
                 <div className='flex flex-col gap-6 px-12 py-20 w-2/3 text-5xl font-bold text-gray-900 leading-none'>
                     <span>Intuitive and seamless. <br /> Web3 has never been easier</span>
-                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn't feel like a good value. </div>
+                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. </div>
                 </div>
                 <div className='flex flex-col gap-6 px-12 py-20 w-2/3 text-5xl font-bold text-gray-900 leading-none'>
                     <span>Based on CoinBase. <br /> Safed by Safe.</span>
-                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn't feel like a good value. </div>
+                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. </div>
                 </div>
                 <div className='rounded-2xl text-4xl bg-green-500 text-gray-900 flex flex-row justify-between items-center gap-12 px-12 py-6 w-full font-bold text-gray-900 leading-none'>
                     <span>Save $. Join <span className='text-white'>Spayce</span></span>

@@ -67,8 +67,8 @@ export default function Page() {
                             Choose your plan
                         </div>
                         <div className="flex flex-row gap-2 items-center justify-center flex-wrap">
-                            {providers ? providers.map((elem) => (
-                                <SubscriptionItem id={elem.id} name={elem.provider.name} description={elem.name} logo={elem.provider.icon} onClick={(id: number) => { setChosen(id) }} />
+                            {providers ? providers.map((elem, key) => (
+                                <SubscriptionItem id={elem.id} key={key} name={elem.provider.name} description={elem.name} logo={elem.provider.icon} onClick={(id: number) => { setChosen(id) }} />
                             )) : null}
 
                         </div>

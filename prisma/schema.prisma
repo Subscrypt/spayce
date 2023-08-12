@@ -52,7 +52,7 @@ model SubscriptionMember {
 
 model Payment {
   id                   Int                 @id @default(autoincrement())
-  amount               BigInt
+  amount               Int
   createdAt            DateTime            @default(now())
   user                 User?               @relation(fields: [userId], references: [id])
   userId               Int?

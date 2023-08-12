@@ -8,7 +8,7 @@ export async function GET() {
     DEPLOYER_ADDRESS_PRIVATE_KEY: process.env.DEPLOYER_ADDRESS_PRIVATE_KEY || "",
     DEPLOY_SAFE: {
       OWNERS: [process.env.DEPLOYER_ADDRESS || "", process.env.OWNER_1_ADDRESS || "", process.env.OWNER_2_ADDRESS || ""],
-      THRESHOLD: 2,
+      THRESHOLD: 3,
       SALT_NONCE: '0'
     }
   }

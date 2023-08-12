@@ -4,7 +4,36 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import Layout from '../../components/crud/Layout'
 
+
+
+import { proposeTx, proposeTxWallet } from "../../utils/safe/api-kit/propose-transaction";
+import { OperationType, SafeTransactionDataPartial } from '@safe-global/safe-core-sdk-types'
+import { useAccountAbstraction } from '@/app/store/safe/accountAbstractionContext'
+
+
+
+
+async function proposeAndSign(provider) {
+  
+  const config = {
+    RPC_URL: process.env.NEXT_PUBLIC_BASE_RPC_URL || "",
+    SIGNER_ADDRESS_PRIVATE_KEY: process.env.DEPLOYER_ADDRESS_PRIVATE_KEY || "",
+    SAFE_ADDRESS: process.env.NEXT_PUBLIC_SAFE_ADDRESS || "",
+    TX_SERVICE_URL: process.env.NEXT_PUBLIC_BASE_SAFE_TX_SERVICE_URL || ""
+  }
+  const safeTransactionData: SafeTransactionDataPartial = {
+    to: process.env.NEXT_PUBLIC_OWNER_1_ADDRESS || "",
+    value: '1', // 1 wei
+    data: '0x',
+    operation: OperationType.Call
+  }
+
+  const safeAddress = await proposeTxWallet(config, safeTransactionData, provider)
+}
+
+
 const Home = () => {
+  const { loginWeb3Auth, logoutWeb3Auth, ownerAddress, isAuthenticated, safeSelected, chainId, web3Provider } = useAccountAbstraction()
   const { push } = useRouter()
 
   const onCustomUserHandler = async () => {
@@ -25,6 +54,9 @@ const Home = () => {
           </Button>
           <Button colorScheme="green" onClick={() => push('/docs')}>
             Swagger doc
+          </Button>
+          <Button colorScheme="gray" onClick={() => proposeAndSign(web3Provider)}>
+            Propose & Sign Tx
           </Button>
         </VStack>
       </VStack>

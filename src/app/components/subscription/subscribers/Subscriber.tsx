@@ -57,7 +57,7 @@ const Subscriber = ({ user, message, avatar, hasWarning }: User) => {
 
     return (
         <>
-            {user ?
+            {user !== "Empty slot" ?
                 <div onMouseEnter={renderInformation}
                     onMouseLeave={renderInformation}
                     className={`${information ? 'z-10' : ''}  rounded-full border-2 mr-[-12px] ${hasWarning ? 'border-red-500' : 'border-gray-50'}  p-px bg-gray-50`}>

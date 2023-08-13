@@ -10,7 +10,7 @@ import { Subscription } from "../../types";
 import { renderSwitch } from './utils/renderSwitch'
 
 const Subscription = ({
-  id, address, plan, planId, members, created_at
+  id, address, plan, planId, members, createdAt
 }: Subscription) => {
   const [pop, setPop] = useState(false);
 
@@ -57,7 +57,7 @@ const Subscription = ({
         <div className="flex flex-row gap-3">
           <div className="w-24 pr-3 flex flex-col items-start">
             <span className="opacity-50">{'Renews on'}</span>
-            <span>{plan?.renewal_date}</span>
+            <span>{plan?.renewalDate.toString().slice(0, 10)}</span>
           </div>
           <div className="w-16 flex flex-col">
             <div className={`font-semibold`}>

@@ -7,7 +7,7 @@ interface SubscriptionInfo {
     description: string;
     price: number;
     coin?: Currency;
-    renewalDate: string;
+    renewalDate: Date;
     status?: SubscriptionStatus;
 }
 
@@ -35,7 +35,7 @@ export interface Plan {
     provider: Provider;
     providerId: number;
     subscriptions: Subscription[];
-    renewal_date: string;
+    renewalDate: Date;
     price: number;
 }
 
@@ -45,7 +45,7 @@ export interface Subscription {
     plan: Plan;
     planId: number;
     members: SubscriptionMember[];
-    created_at: string;
+    createdAt: Date;
 }
 
 export interface SubscriptionMember {

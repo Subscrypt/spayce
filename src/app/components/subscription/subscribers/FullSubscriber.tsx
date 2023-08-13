@@ -16,7 +16,7 @@ const FullSubscriber = ({ user, message, avatar, hasWarning }: User) => {
     const [color, setColor] = useState(randomColor());
     return (
         <>
-            {user ?
+            {user !== "Empty slot" ?
                 <div className='flex text-sm flex-row gap-2 items-center p-1 pr-3 bg-white border border-white rounded-lg'>
                     <div
                         style={{ backgroundColor: color }}

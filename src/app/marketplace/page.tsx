@@ -43,7 +43,7 @@ export default function Home() {
               plan={elem.plan}
               planId={elem.planId}
               members={elem.members}
-              created_at={elem.created_at}
+              createdAt={elem.createdAt}
             />
           )
           : <div className="h-40 w-40"><Lottie animationData={logo} autoplay={true} loop={true} /></div>}

@@ -26,17 +26,20 @@ model Plan {
   id            Int            @id @default(autoincrement())
   name          String
   max_users     Int?
+  renewalDate   DateTime?
+  price         Float?
   provider      Provider       @relation(fields: [providerId], references: [id])
   providerId    Int
   subscriptions Subscription[]
 }
 
 model Subscription {
-  id      Int                  @id @default(autoincrement())
-  address String?
-  plan    Plan                 @relation(fields: [planId], references: [id])
-  planId  Int
-  members SubscriptionMember[]
+  id        Int                  @id @default(autoincrement())
+  address   String?
+  createdAt DateTime             @default(now())
+  plan      Plan                 @relation(fields: [planId], references: [id])
+  planId    Int
+  members   SubscriptionMember[]
 }
 
 model SubscriptionMember {

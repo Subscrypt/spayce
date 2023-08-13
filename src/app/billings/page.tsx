@@ -1,7 +1,33 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import Billing from '../components/billings/Billing'
+import { useAccountAbstraction } from "../store/safe/accountAbstractionContext";
+import { Payment } from '../types'
+
+const fetchBillings = async (address: string) => {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/users/' + address + '/payments');
+  const cards = await res.json();
+  return cards
+}
 
 export default function Home() {
+
+  const { ownerAddress } = useAccountAbstraction()
+  const [loading, setLoading] = useState(false);
+  const [billings, setBillings] = useState<Payment[] | null>(null);
+  useEffect(() => {
+    const getBillings = async () => {
+      if (billings === null && ownerAddress) {
+        setLoading(true);
+        const newBillings = await fetchBillings(ownerAddress);
+        setBillings(newBillings);
+      }
+      setLoading(false);
+    }
+    getBillings();
+    console.log(billings)
+  })
+
   return (
     <main className="w-full h-full bg-white flex flex-col gap-6">
       <div className="flex flex-row w-full pt-3 px-3 justify-between items-center">
@@ -37,19 +63,8 @@ export default function Home() {
           </div>
           <div className='w-full h-px bg-gray-100' />
         </div>
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
-        <Billing name='Netflix' description='Premium Subscription' price={0.01} coin='ETH' renewalDate='01.01.2014' />
+        {billings ? billings.map((element, key) => <Billing key={key} name={element.member?.subscription.plan.provider.name ? element.member?.subscription.plan.provider.name : ''} description={element.member?.subscription.plan.name ? element.member?.subscription.plan.name : ''} price={element.amount} coin='ETH' renewalDate={element.createdAt.toString()} />) : null}
+        {billings?.length === 0 ? <div className='w-full flex items-center justify-center p-8 font-semibold uppercase opacity-50'>You don&apos;t have any billings</div> : null}
       </div>
     </main>
   );

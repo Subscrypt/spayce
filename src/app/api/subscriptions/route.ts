@@ -3,7 +3,7 @@ import { prisma } from '@/app/db'
 
 export async function GET() {
     const result = await prisma.subscription.findMany({
-        include: { 
+        include: {
             members: {
                 include: {
                     user: true,

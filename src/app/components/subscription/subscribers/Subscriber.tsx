@@ -69,7 +69,15 @@ const Subscriber = ({ user, message, avatar, hasWarning }: User) => {
                             name={user}
                             variant="beam"
                             colors={["#FFE181", "#EEE9E5", "#FAD3B2", "#FFBA7F", "#FF9C97"]}
-                        /> : <div className='text-white font-semibold w-full h-full flex justify-center items-center'>{user[0]}</div>}
+                        /> :
+                            // <div className='text-white font-semibold w-full h-full flex justify-center items-center'>{user[0]}</div>
+                            <Avatar
+                                size={24}
+                                name={user}
+                                variant="beam"
+                                colors={["#FFE181", "#EEE9E5", "#FAD3B2", "#FFBA7F", "#FF9C97"]}
+                            />
+                        }
                     </div>
                     {information ? <Information user={user} message={message} hasWarning={hasWarning} /> : null}
                 </div >

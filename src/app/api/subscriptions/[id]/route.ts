@@ -34,7 +34,12 @@ type Subscription = {
 };
 
 const combinePayments = (subscription: any): Subscription => {
-    const allPayments = subscription.members.flatMap((member: any) => member.payments);
+    const allPayments = subscription.members.flatMap((member: any) => {
+        return member.payments.map((payment: any) => ({
+            ...payment,
+            user: member.user
+        }));
+    });
     subscription.payments = allPayments;
     return subscription;
 };

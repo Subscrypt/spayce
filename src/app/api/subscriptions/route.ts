@@ -67,7 +67,7 @@ const addPlaceholderMembers = (data: any): Subscription[] => {
 
 export async function GET() {
     const subscriptions = await prisma.subscription.findMany({
-        include: { 
+        include: {
             members: {
                 include: {
                     user: true,

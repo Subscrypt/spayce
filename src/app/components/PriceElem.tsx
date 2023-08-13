@@ -13,7 +13,7 @@ const PriceElem = ({ head, info, coin }: Props) => {
                 <span className="pr-1">{head}</span>
             </div>
             <div className="w-full flex flex-row justify-start items-end">
-                <span className="pr-1 text-xl font-bold">{info}</span>
+                <span className="pr-1 max-w-[140px] truncate text-xl font-bold">{info}</span>
                 {coin ? <span className="uppercase text-[10px] translate-y-[-9px]">{coin}</span> : null}
             </div>
 

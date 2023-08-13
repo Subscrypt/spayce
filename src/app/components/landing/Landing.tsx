@@ -13,7 +13,7 @@ const Landing = () => {
                 <div className='border-2 border-gray-100 relative overflow-hidden md:p-12 p-4 flex flex-col justify-between items-start w-full h-[800px] bg-gray-50 rounded-2xl'>
                     <div className='flex flex-row gap-2 font-semibold md:text-sm text-xs uppercase items-center text-gray-600'>made proudly using <img className='w-6 h-6' src='/img/landing/safe.png' /> and <img className='w-6 h-6' src='/img/landing/base.png' /> during Superhack</div>
                     <div>
-                        <div className='absolute xl:right-[-150px] right-[-450px] hidden md:block top-[-200px]'>
+                        <div className='absolute xl:right-[-150px] right-[-450px] hidden lg:block top-[-200px]'>
                             <Image quality={100} width={787} height={1060} alt='imageCollection' src={'/img/landing/collection.png'} />
                         </div>
                         <div className='w-16 h-16 -translate-x-3 mb-4'><Lottie animationData={logo} loop={false} /></div>
@@ -50,21 +50,35 @@ const Landing = () => {
                         </div>
                     </div>
                 </div>
-                <div id='features' className='flex flex-col gap-6 md:px-12 px-2 py-20 md:w-2/3 w-full text-5xl font-bold text-gray-900 leading-none'>
-                    <span>Multisignature Wallets</span>
-                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price</div>
+                <div className='flex flex-row gap-12 md:px-12 px-2 py-20 items-center text-5xl font-bold text-gray-900 leading-none'>
+                    <img className='w-[365x] h-[389px] hidden md:block' src='/img/landing/wallets.png' />
+                    <div className='flex flex-col gap-6'>
+                        <span>Multisignature Wallets</span>
+                        <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>With our multisig wallets, funds are safeguarded by requiring multiple signatories to authorize a transaction. Perfect for group subscriptions and shared expenses.
+                        </div>
+                    </div>
                 </div>
-                <div className='flex flex-col gap-6 md:px-12 px-2 py-20 md:w-2/3 w-full text-5xl font-bold text-gray-900 leading-none'>
-                    <span>Accout Abstractions</span>
-                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. </div>
+                <div className='flex flex-row gap-12 md:px-12 px-2 py-20 items-center text-5xl font-bold text-gray-900 leading-none'>
+                    <div className='flex flex-col gap-6'>
+                        <span>Accout Abstractions</span>
+                        <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>Simplifying complexities, one transaction at a time, making possible to perform recurrent payments
+                            Our system abstracts the intricacies of shared payments, allowing for a smoother, hassle-free experience while ensuring transparency and trust amongst users.
+                        </div>
+                    </div>
+                    <img className='w-[365x] h-[389px] hidden md:block' src='/img/landing/abstractions.png' />
                 </div>
-                <div className='flex flex-col gap-6 md:px-12 px-2 py-20 md:w-2/3 w-full text-5xl font-bold text-gray-900 leading-none'>
-                    <span>Intuitive and seamless. <br /> Web3 has never been easier</span>
-                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. </div>
+                <div className='bg-green-500 flex flex-col gap-6 md:px-12 rounded-2xl px-2 py-20 w-full text-5xl font-bold text-gray-900 leading-none'>
+                    <span className='text-white'>Intuitive and seamless.</span>
+                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>Dive into the future without the learning curve.
+                        With Spayce, we&#39;ve transformed the Web3 experience to be as simple as any everyday app. Web3 has never been this accessible.
+                    </div>
                 </div>
-                <div className='flex flex-col gap-6 md:px-12 px-2 py-20 md:w-2/3 w-full text-5xl font-bold text-gray-900 leading-none'>
-                    <span>Based on CoinBase. <br /> Safed by Safe.</span>
-                    <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. </div>
+                <div className='flex flex-row gap-12 md:px-12 px-2 py-20 items-center text-5xl font-bold text-gray-900 leading-none'>
+                    <div className='flex flex-col gap-6 md:w-2/3 w-full'>
+                        <span>Based on <span className='text-blue-500'>Base.</span> <br /> Safed by <span className='text-green-500'>Safe</span></span>
+                        <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>Battle-Tested Partnerships in the Web3 Domain.
+                            Rely on the robust foundations of Base, an industry giant in the crypto realm, coupled with the unparalleled security of Safe. Together, they form a fortress of trust and reliability, ensuring your shared finances are in expert hands. </div>
+                    </div>
                 </div>
                 <div className='rounded-2xl sm:mb-0 mb-20 md:text-4xl text-3xl bg-green-500 text-gray-900 flex flex-row justify-between items-center gap-12 md:px-12 px-4 md:py-6 py-4 w-full font-bold text-gray-900 leading-none'>
                     <span>Save $. Join <span className='text-white'>Spayce</span></span>

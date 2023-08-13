@@ -5,10 +5,10 @@ import SubscriptionItem from "../../components/createSubscription/subscriptionIt
 import logoWhite from '../../../../public/img/logo_white.json'
 import logo from '../../../../public/img/logo.json'
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import { useAccountAbstraction } from "../../store/safe/accountAbstractionContext";
+import { User, Subscription } from "../../types";
+import { useRouter } from "next/navigation"
 
-const handleCreateSpayce = () => {
-
-}
 
 interface CompanyProvider {
     id: number
@@ -31,7 +31,38 @@ const fetchProviders = async () => {
     return providers;
 }
 
+interface FetchData {
+    planId: number;
+    userId: number;
+}
+
+const fetchUser = async (address: string) => {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/users/' + address)
+    const user = await res.json();
+    return user;
+}
+
+const fetchCreateSpayce = async (data: FetchData) => {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/subscriptions", {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    const spayce = res.json();
+    return spayce;
+}
+
 export default function Page() {
+    const router = useRouter();
+    const { loginWeb3Auth, logoutWeb3Auth, ownerAddress, isAuthenticated, safeSelected, chainId } = useAccountAbstraction()
     const [chosen, setChosen] = useState(0);
     const [subChosen, setSubChosen] = useState(1);
     const [providers, setProviders] = useState<ProviderElement[] | null>(null);
@@ -55,6 +86,17 @@ export default function Page() {
             lottieRef.current?.play();
         }
     })
+
+    const handleCreateSpayce = async () => {
+        const user: User = await fetchUser(ownerAddress as string);
+        const data = {
+            planId: chosen,
+            userId: user.id,
+        }
+        const newSpayce: Subscription = await fetchCreateSpayce(data);
+        return router.push('/subscriptions/' + newSpayce.id)
+    }
+
     return (
         <PopUpEnvironment>
             <div className="flex flex-col items-center sm:w-[600px] w-[300px] gap-8 p-8 bg-white rounded-2xl">
@@ -77,7 +119,9 @@ export default function Page() {
                 }
                 <div className="flex flex-col gap-2">
                     <div className={`${chosen === 0 ? 'opacity-0' : 'opacity-60'} w-full text-center uppercase text-sm font-semibold`}>{providers ? providers[subChosen - 1].provider.name + ' ' + providers[subChosen - 1].name + " is for " + providers[subChosen - 1].max_users + " members" : null}</div>
-                    <button className={`${chosen === 0 ? 'opacity-30' : 'opacity-100'} flex flex-row gap-1 items-center justify-center transition-opacity p-4 bg-green-500 hover:bg-green-600 active:bg-green-700 font-bold text-white rounded-xl`}>
+                    <button
+                        onClick={handleCreateSpayce}
+                        className={`${chosen === 0 ? 'opacity-30' : 'opacity-100'} flex flex-row gap-1 items-center justify-center transition-opacity p-4 bg-green-500 hover:bg-green-600 active:bg-green-700 font-bold text-white rounded-xl`}>
                         <div
                             onClick={handleCreateSpayce}
                             style={{ transform: chosen === 0 ? 'translateX(-16px)' : 'translateX(0px)' }}

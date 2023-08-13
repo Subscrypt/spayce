@@ -25,7 +25,7 @@ export async function POST(
             subscription: { include: { plan: true } },
         },
     })
-    
+
     console.log("Members", members)
 
     const all_accepted = members.every((member) => member.accepted)
@@ -38,7 +38,7 @@ export async function POST(
         const data = members.map((member) => ({
             userId: member.user.id,
             subscriptionMemberId: member.id,
-            amount: member.subscription.plan.price / members.length,
+            amount: (member.subscription.plan.price as number) / members.length,
         }))
         console.log("Generated payments data", data)
 

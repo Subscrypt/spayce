@@ -13,7 +13,7 @@ import { useAccountAbstraction } from '@/app/store/safe/accountAbstractionContex
 
 
 
-async function proposeAndSign(provider) {
+async function proposeAndSign(provider: any) {
   
   const config = {
     RPC_URL: process.env.NEXT_PUBLIC_BASE_RPC_URL || "",

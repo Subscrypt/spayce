@@ -38,7 +38,7 @@ export async function POST(
     console.log("Checking if it's the last user")
 
     // Get plan data for subscription
-    const subscription = await prisma.subscription.findUnique({
+    const subscription: any = await prisma.subscription.findUnique({
         where: { id: added_member.subscriptionId },
         include: { plan: true },
     });

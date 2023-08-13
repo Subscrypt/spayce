@@ -51,8 +51,10 @@ const Header = () => {
     setTimeout(() => setVisible(false), 1500)
   }
 
-  const copyTextNotif = () => renderNotification("Text Copied!")
-
+  const copyTextNotif = () => {
+    navigator.clipboard.writeText(ownerAddress as string)
+    renderNotification("Text Copied!")
+  }
 
   const { loginWeb3Auth, logoutWeb3Auth, ownerAddress, isAuthenticated, safeSelected, chainId } = useAccountAbstraction()
 

@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from "react";
 import Subscription from "../components/subscription/Subscription";
-import { Subscription as Subs, SubscriptionMember, Payment, User, Plan, Provider } from "../types";
+import { Subscription as Subs } from "../types";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import logo from '../../../public/img/logo.json'
 
@@ -37,6 +37,7 @@ export default function Home() {
         {cards ?
           cards.map((elem, key) =>
             <Subscription
+              payments={elem.payments}
               key={key}
               id={elem.id}
               address={elem.address}

@@ -6,7 +6,7 @@ import { useState } from 'react';
 interface User {
     avatar?: string;
     user?: string;
-    message?: string;
+    message?: boolean;
     hasWarning?: boolean;
 }
 
@@ -27,11 +27,11 @@ const FullSubscriber = ({ user, message, avatar, hasWarning }: User) => {
                             variant="beam"
                             square={true}
                             colors={["#FFE181", "#EEE9E5", "#FAD3B2", "#FFBA7F", "#FF9C97"]}
-                        /> : <div className='text-white font-semibold w-full h-full flex justify-center items-center'>{user[0]}</div>}
+                        /> : <div className='text-white font-semibold w-full h-full flex justify-center items-center'>{user ? user[0] : ''}</div>}
                     </div>
                     <div className="flex flex-col items-start">
-                        <span className="font-semibold">{user}</span>
-                        <span className="opacity-50">{message ? message : 'Paid & approved'}</span>
+                        <span className="font-semibold max-w-[160px] truncate">{user}</span>
+                        <span className="opacity-50">{message ? message : 'Not signed'}</span>
                     </div>
                 </div>
                 :

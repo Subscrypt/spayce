@@ -63,7 +63,7 @@ export default function Home() {
           </div>
           <div className='w-full h-px bg-gray-100' />
         </div>
-        {billings ? billings.map((element, key) => <Billing key={key} name={element.member?.subscription.plan.provider.name ? element.member?.subscription.plan.provider.name : ''} description={element.member?.subscription.plan.name ? element.member?.subscription.plan.name : ''} price={element.amount} coin='ETH' renewalDate={element.createdAt.toString()} />) : null}
+        {billings ? billings.map((element, key) => <Billing key={key} name={element.member?.subscription.plan.provider.name ? element.member?.subscription.plan.provider.name : ''} description={element.member?.subscription.plan.name ? element.member?.subscription.plan.name : ''} price={element.amount} coin='ETH' renewalDate={element.createdAt.toString().slice(0, 10)} />) : null}
         {billings?.length === 0 ? <div className='w-full flex items-center justify-center p-8 font-semibold uppercase opacity-50'>You don&apos;t have any billings</div> : null}
       </div>
     </main>

@@ -10,7 +10,7 @@ interface Props {
 
 const SubsBilling = ({ price, coin, date, user }: Props) => {
     return (
-        <div className='font-semibold  text-sm flex flex-row p-2 justify-between rounded-md bg-white h-fit'>
+        <div className='font-semibold text-sm flex flex-row p-2 justify-between rounded-md bg-white h-fit'>
             <div className={`flex flex-row`}>
                 <div className="w-40 truncate flex flex-row justify-start items-end">
                     <span className="pr-1">{user}</span>

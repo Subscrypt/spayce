@@ -37,7 +37,7 @@ const useMousePosition = (): MousePosition => {
 const Information = ({ user, message, hasWarning }: User) => {
     const mousePosition = useMousePosition();
     return (<div style={{ left: mousePosition.x + 'px', top: mousePosition.y + 'px' }} className={`absolute text-xs flex flex-col items-start gap-0 rounded-xl py-2 px-3 bg-gray-100 border-2 ${hasWarning ? 'border-red-300' : 'border-gray-200'}  shadow-xl z-10`} >
-        <div className='font-bold'>
+        <div className='font-bold max-w-[160px] truncate'>
             {user}
         </div>
         <div className='font-medium'>

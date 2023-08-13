@@ -7,7 +7,7 @@ interface SubscriptionInfo {
     description: string;
     price: number;
     coin?: Currency;
-    renewalDate: Date;
+    renewalDate: string;
     status?: SubscriptionStatus;
 }
 

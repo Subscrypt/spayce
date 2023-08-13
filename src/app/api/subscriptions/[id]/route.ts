@@ -34,17 +34,40 @@ type Subscription = {
 };
 
 const combinePayments = (subscription: any): Subscription => {
-    const allPayments = subscription.members.flatMap((member:any) => member.payments);
+    const allPayments = subscription.members.flatMap((member: any) => member.payments);
     subscription.payments = allPayments;
     return subscription;
 };
+
+// Function to add placeholder members
+const addPlaceholderMembers = (subscription: any): Subscription[] => {
+    const currentMembersCount = subscription.members.length;
+    const placeholdersToAdd = subscription.plan.max_users - currentMembersCount;
+
+    for (let i = 0; i < placeholdersToAdd; i++) {
+        subscription.members.push({
+            id: -1, // Indicate it's a placeholder with a negative id
+            createdAt: new Date().toISOString(),
+            accepted: false,
+            userId: -1, // Indicate it's a placeholder with a negative id
+            subscriptionId: subscription.id,
+            user: {
+                id: -1, // Indicate it's a placeholder with a negative id
+                name: 'Empty slot',
+                address: ''
+            }
+        });
+    }
+    return subscription;
+}
+
 
 export async function GET(
     request: Request, params: { params: { id: string } }
 ) {
     let subscription = await prisma.subscription.findFirst({
         where: { id: parseInt(params.params.id) },
-        include: { 
+        include: {
             members: {
                 include: {
                     user: true,
@@ -58,6 +81,7 @@ export async function GET(
     })
 
     let subscription_with_payments = combinePayments(subscription);
+    let subscriptions_with_placeholders = addPlaceholderMembers(subscription_with_payments);
 
-    return NextResponse.json(subscription_with_payments)
+    return NextResponse.json(subscriptions_with_placeholders)
 }

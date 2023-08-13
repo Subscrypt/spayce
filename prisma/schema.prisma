@@ -27,7 +27,7 @@ model Plan {
   name          String
   max_users     Int?
   renewalDate   DateTime?
-  price         Float?
+  price         Float
   provider      Provider       @relation(fields: [providerId], references: [id])
   providerId    Int
   subscriptions Subscription[]
@@ -55,7 +55,7 @@ model SubscriptionMember {
 
 model Payment {
   id                   Int                 @id @default(autoincrement())
-  amount               Int
+  amount               Float
   createdAt            DateTime            @default(now())
   user                 User?               @relation(fields: [userId], references: [id])
   userId               Int?

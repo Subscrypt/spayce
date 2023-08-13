@@ -11,6 +11,7 @@ import Notification from '../notification/Notification';
 import SubsBilling from './subsBilling/SubsBilling'
 import PopUpEnvironment from '../utils/PopUpEnvironment'
 import { Subscription } from "../../types";
+import path from 'path';
 
 
 const fetchSubsData = async (path: string) => {
@@ -20,6 +21,7 @@ const fetchSubsData = async (path: string) => {
 }
 
 const PopUp = () => {
+    const [subs, setSubs] = useState<Subscription | null>(null);
     const pathName = usePathname();
     const handleLinkCopy = () => {
         const link = 'https://spayce.us' + pathName;
@@ -31,19 +33,22 @@ const PopUp = () => {
     const [visible, setVisible] = useState(false);
 
     const [loading, setLoading] = useState(false);
-    const [subs, setSubs] = useState<Subscription | null>(null);
+
     useEffect(() => {
-        const getSubs = async () => {
+        const getSubs = async (path: string) => {
             if (subs === null) {
                 setLoading(true);
-                const newSubs = await fetchSubsData(pathName as string);
+                const newSubs = await fetchSubsData(path as string);
+                console.log('newSubs is ' + newSubs)
                 setSubs(newSubs);
+                console.log('subs fetched')
+                console.log(subs)
             }
             setLoading(false);
         }
-        getSubs();
-        console.log(subs)
+        getSubs(pathName ? pathName : '');
     })
+    console.log(subs)
 
     return (
         <PopUpEnvironment>
@@ -67,7 +72,7 @@ const PopUp = () => {
                             {/* <PriceElem head={`Ends`} info={`14.13.12`} /> */}
                         </div>
                         <div className="flex flex-row gap-8">
-                            <PriceElem head={`Overall`} info={`${subs?.plan.price}`} coin={`ETH}`} />
+                            <PriceElem head={`Overall`} info={`${subs?.plan.price}`} coin={`ETH`} />
                             <PriceElem head={`Individual`} info={`${subs?.plan.price ? subs?.plan.price / subs?.members.length : ''}`} coin={`ETH`} />
                             {subs?.plan.max_users ? <PriceElem head={`Lowest Possible`} info={`${subs && subs.plan.max_users ? subs.plan.price / subs.plan.max_users : ''}`} coin={`ETH`} /> : null}
                         </div>
@@ -77,13 +82,13 @@ const PopUp = () => {
                     <div className='flex flex-col'>
                         <div className='w-full flex flex-col items-start text-xs uppercase font-semibold mb-1'><span className='ml-2 opacity-50'>Subscribers</span></div>
                         <div className='grid grid-cols-2 gap-1 justify-between p-1 bg-gray-100 rounded-xl'>
-                            <FullSubscriber user='Andrey Ezhov' /> <FullSubscriber user='Andrey Ezhov' message='Kek' avatar='s' /> <FullSubscriber /> <FullSubscriber /> <FullSubscriber />
+                            {subs?.members.map((elem, key) => <><FullSubscriber user={elem.user.name ? elem.user.name : elem.user.address} /></>)}
                         </div>
                     </div>
                     <div className='flex flex-col mb-6'>
                         <div className='w-full flex flex-col items-start text-xs uppercase font-semibold mb-1'><span className='ml-2 opacity-50'>Billing history</span></div>
                         <div className='grid grid-cols-1 border-2 border-gray-100 h-32 overflow-scroll gap-1 justify-between p-1 bg-gray-100 rounded-xl'>
-                            {subs ? subs.plan.subscriptions.map((elem, key) =>
+                            {subs ? subs.plan.subscriptions?.map((elem, key) =>
                                 elem.members.map((el, ke) =>
                                     el.payments.map((e, k) =>
                                         <SubsBilling key={k} user={el.user.name ? el.user.name : el.user.address} date={e.createdAt} price={e.amount} />))

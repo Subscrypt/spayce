@@ -150,7 +150,7 @@ const AccountAbstractionProvider = ({ children }: { children: JSX.Element }) => 
             name: 'Safe'
           }
         },
-        privateKeyProvider
+        // privateKeyProvider
       })
 
       const web3AuthModalPack = new Web3AuthModalPackFixed({

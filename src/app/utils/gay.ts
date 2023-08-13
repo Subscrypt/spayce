@@ -6,7 +6,7 @@ declare const ADAPTER_NAMESPACES: {
     readonly EIP155: "eip155";
     readonly SOLANA: "solana";
     readonly MULTICHAIN: "multichain";
-    readonly XRPL: "xrpl";
+    // readonly XRPL: "xrpl";
 };
 type AdapterNamespaceTypeFixed = (typeof ADAPTER_NAMESPACES)[keyof typeof ADAPTER_NAMESPACES];
 

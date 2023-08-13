@@ -65,6 +65,7 @@ export interface Payment {
     amount: number;
     createdAt: Date;
     user?: User | null;
+    address: string | null;
     userId?: number | null;
     member?: SubscriptionMember | null;
     subscriptionMemberId?: number | null;

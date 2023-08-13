@@ -70,7 +70,11 @@ const Landing = () => {
                 <div className='bg-green-500 flex flex-col gap-6 md:px-12 rounded-2xl px-2 py-20 w-full text-5xl font-bold text-gray-900 leading-none'>
                     <span className='text-white'>Intuitive and seamless.</span>
                     <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>Dive into the future without the learning curve.
+<<<<<<< HEAD
                         With Spayce, we&apos;ve transformed the Web3 experience to be as simple as any everyday app. Web3 has never been this accessible.
+=======
+                        With Spayce, we&#39;ve transformed the Web3 experience to be as simple as any everyday app. Web3 has never been this accessible.
+>>>>>>> 1635d60242b4228f1476207de67f401eb2e5c9e8
                     </div>
                 </div>
                 <div className='flex flex-row gap-12 md:px-12 px-2 py-20 items-center text-5xl font-bold text-gray-900 leading-none'>

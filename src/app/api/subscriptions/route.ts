@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 import { prisma } from '@/app/db'
 
 export async function GET() {
@@ -16,4 +16,22 @@ export async function GET() {
     })
 
     return NextResponse.json(result)
+}
+
+export async function POST(request: NextRequest) {
+    const { planId, userId } = await request.json()
+    const data = {
+        plan: {
+            connect: {
+                id: parseInt(planId),
+            }
+        },
+        members: {
+            create: {
+                user: { connect: { id: parseInt(userId) } },
+            },
+        },
+    }
+    const subscription = await prisma.subscription.create({ data })
+    return NextResponse.json(subscription)
 }

@@ -28,7 +28,7 @@ export default function RootLayout(props: {
           <Header />
           <div className="w-full flex flex-row gap-1 h-[92vh]">
             <LeftMenu />
-            <div className="bg-white rounded-2xl w-full overflow-auto p-5">
+            <div className="bg-white rounded-2xl w-full overflow-auto md:p-5 p-1">
               <QueryProvider>
                 {props.children}
                 {props?.modal}

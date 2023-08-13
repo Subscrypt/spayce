@@ -8,8 +8,8 @@ datasource db {
 
 model User {
   id          Int                  @id @default(autoincrement())
-  name        String
-  address     String
+  name        String?
+  address     String               @unique
   payments    Payment[]
   memberships SubscriptionMember[]
 }
@@ -33,7 +33,7 @@ model Plan {
 
 model Subscription {
   id      Int                  @id @default(autoincrement())
-  address String
+  address String?
   plan    Plan                 @relation(fields: [planId], references: [id])
   planId  Int
   members SubscriptionMember[]

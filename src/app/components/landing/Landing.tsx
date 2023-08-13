@@ -13,7 +13,7 @@ const Landing = () => {
                 <div className='border-2 border-gray-100 relative overflow-hidden md:p-12 p-4 flex flex-col justify-between items-start w-full h-[800px] bg-gray-50 rounded-2xl'>
                     <div className='flex flex-row gap-2 font-semibold md:text-sm text-xs uppercase items-center text-gray-600'>made proudly using <img className='w-6 h-6' src='/img/landing/safe.png' /> and <img className='w-6 h-6' src='/img/landing/base.png' /> during Superhack</div>
                     <div>
-                        <div className='absolute xl:right-[-150px] right-[-450px] hidden md:block top-[-200px]'>
+                        <div className='absolute xl:right-[-150px] right-[-450px] hidden lg:block top-[-200px]'>
                             <Image quality={100} width={787} height={1060} alt='imageCollection' src={'/img/landing/collection.png'} />
                         </div>
                         <div className='w-16 h-16 -translate-x-3 mb-4'><Lottie animationData={logo} loop={false} /></div>

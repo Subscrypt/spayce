@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server'
 import { execueTx } from "../../../utils/safe/api-kit/execute-transaction";
 
 
-export async function GET(safeTxHash: string) {
+export async function GET() {
+  const safeTxHash: string = "0x0"
   const config = {
     RPC_URL: process.env.BASE_RPC_URL || "",
     SIGNER_ADDRESS_PRIVATE_KEY: process.env.DEPLOYER_ADDRESS_PRIVATE_KEY || "",

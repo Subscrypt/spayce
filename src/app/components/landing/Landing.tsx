@@ -29,7 +29,7 @@ const Landing = () => {
                     <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. So you plan to share a Premium Plan for $12.99 for 5 people, but your friend Jake is not a reliable person to pay his share, and you don&apos;t have the rest 3 to share your lovely streaming service.<br /> And also, <span className='font-bold'>you don&apos;t want to pay with your card all by yourself</span></div>
                 </div>
 
-                <div className='rounded-2xl bg-green-500 text-gray-900 flex flex-col md:p-12 py-12 p-4 w-full md:gap-0 gap-12 text-5xl font-bold text-gray-900 leading-none'>
+                <div className='rounded-2xl bg-green-500 text-gray-900 flex flex-col md:p-12 py-12 p-4 w-full  gap-12 text-5xl font-bold text-gray-900 leading-none'>
                     <span><span className='text-white'>Spayce</span> got you covered</span>
                     <div className='flex md:flex-row flex-col gap-6'>
                         <div className='md:w-1/4 w-full flex flex-col gap-2'>
@@ -66,7 +66,7 @@ const Landing = () => {
                     <span>Based on CoinBase. <br /> Safed by Safe.</span>
                     <div className='w-full text-2xl font-medium text-gray-900 leading-normal'>But with its price, it just doesn&apos;t feel like a good value. </div>
                 </div>
-                <div className='rounded-2xl md:mb-0 mb-20 md:text-4xl text-3xl bg-green-500 text-gray-900 flex flex-row justify-between items-center gap-12 md:px-12 px-4 md:py-6 py-4 w-full font-bold text-gray-900 leading-none'>
+                <div className='rounded-2xl sm:mb-0 mb-20 md:text-4xl text-3xl bg-green-500 text-gray-900 flex flex-row justify-between items-center gap-12 md:px-12 px-4 md:py-6 py-4 w-full font-bold text-gray-900 leading-none'>
                     <span>Save $. Join <span className='text-white'>Spayce</span></span>
                     <button className="text-white py-4 md:px-6 px-2 text-xl rounded-xl font-bold transition-colors border-2 border-white bg-green-500 hover:bg-gray-100 hover:text-green-500 active:bg-white" onClick={loginWeb3Auth}>Log In to Run App</button>
                 </div>

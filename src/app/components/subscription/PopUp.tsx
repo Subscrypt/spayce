@@ -82,15 +82,14 @@ const PopUp = () => {
                     <div className='flex flex-col'>
                         <div className='w-full flex flex-col items-start text-xs uppercase font-semibold mb-1'><span className='ml-2 opacity-50'>Subscribers</span></div>
                         <div className='grid grid-cols-2 gap-1 justify-between p-1 bg-gray-100 rounded-xl'>
-                            {subs?.members.map((elem, key) => <><FullSubscriber key={key} user={elem.user.name ? elem.user.name : elem.user.address} /></>)}
+                            {subs?.members.map((elem, key) => <><FullSubscriber key={key} user={elem.user.name && elem.user.name !== 'Empty slot' ? elem.user.name : elem.user.address} /></>)}
                         </div>
                     </div>
                     <div className='flex flex-col mb-6'>
                         <div className='w-full flex flex-col items-start text-xs uppercase font-semibold mb-1'><span className='ml-2 opacity-50'>Billing history</span></div>
                         <div className='grid grid-cols-1 border-2 border-gray-100 h-32 overflow-scroll gap-1 justify-between p-1 bg-gray-100 rounded-xl'>
-                            {subs ? subs.members.map((el, ke) =>
-                                el.payments.map((e, k) =>
-                                    <SubsBilling key={k} user={el.user.name ? el.user.name : el.user.address} date={e.createdAt} price={e.amount} />))
+                            {subs ? subs.payments.map((el, ke) =>
+                                <SubsBilling key={ke} user={el.user?.name && el.user?.name !== 'Empty slot' ? el.user.name : el.user?.address as string} date={el.createdAt.toString().slice(0, 10)} price={el.amount} />)
                                 : ''}
                         </div>
                     </div>

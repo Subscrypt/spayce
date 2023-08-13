@@ -46,6 +46,7 @@ export interface Subscription {
     planId: number;
     members: SubscriptionMember[];
     createdAt: Date;
+    payments: Payment[]
 }
 
 export interface SubscriptionMember {

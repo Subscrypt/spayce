@@ -3,7 +3,7 @@ import { Currency } from '../../../types'
 
 interface Props {
     user: string;
-    date: Date;
+    date: string;
     price: number;
     coin?: Currency;
 }
